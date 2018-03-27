@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Supervisor | 回音壁 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Tiberius">
+    
+    
+
+    <meta name="description" content="安装sudo easy_install supervisor 生成默认配置文件sudo mkdir /etc/supervisorecho_supervisord_conf &amp;gt; /etc/supervisor/supervisor.conf 修改配置文件(“;”为注释符)web管理[inet_http_server]port=0.0.0.0:9001username=userpasswor">
+<meta name="keywords" content="supervisor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Supervisor | 回音壁">
+<meta property="og:url" content="http://yoursite.com/2018-03-27-supervisor/index.html">
+<meta property="og:site_name" content="回音壁">
+<meta property="og:description" content="安装sudo easy_install supervisor 生成默认配置文件sudo mkdir /etc/supervisorecho_supervisord_conf &amp;gt; /etc/supervisor/supervisor.conf 修改配置文件(“;”为注释符)web管理[inet_http_server]port=0.0.0.0:9001username=userpasswor">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2018-03-27T15:17:51.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Supervisor | 回音壁">
+<meta name="twitter:description" content="安装sudo easy_install supervisor 生成默认配置文件sudo mkdir /etc/supervisorecho_supervisord_conf &amp;gt; /etc/supervisor/supervisor.conf 修改配置文件(“;”为注释符)web管理[inet_http_server]port=0.0.0.0:9001username=userpasswor">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">回音壁</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          一切爆发都有片刻的宁静/一切死亡都有冗长的回声
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Supervisor</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-03-27" class="post-meta__date date">2018-03-27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/supervisor/">supervisor</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <hr>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>sudo easy_install supervisor</p>
+<h1 id="生成默认配置文件"><a href="#生成默认配置文件" class="headerlink" title="生成默认配置文件"></a>生成默认配置文件</h1><p>sudo mkdir /etc/supervisor<br>echo_supervisord_conf &gt; /etc/supervisor/supervisor.conf</p>
+<h1 id="修改配置文件-“-”为注释符"><a href="#修改配置文件-“-”为注释符" class="headerlink" title="修改配置文件(“;”为注释符)"></a>修改配置文件(“;”为注释符)</h1><h1 id="web管理"><a href="#web管理" class="headerlink" title="web管理"></a>web管理</h1><p>[inet_http_server]<br>port=0.0.0.0:9001<br>username=user<br>password=123 </p>
+<h1 id="添加应用"><a href="#添加应用" class="headerlink" title="添加应用"></a>添加应用</h1><p>; [program:xx]是被管理的进程配置参数，xx是进程的名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[program:xx]</span><br><span class="line">command=/opt/apache-tomcat-8.0.35/bin/catalina.sh run ; 程序启动命令</span><br><span class="line">autostart=true   ; 在supervisord启动的时候也自动启动</span><br><span class="line">startsecs=10    ; 启动10秒后没有异常退出，就表示进程正常启动了，默认为1秒</span><br><span class="line">autorestart=true  ; 程序退出后自动重启,可选值：[unexpected,true,false]，默认为unexpected，表示进程意外杀死后才重启</span><br><span class="line">startretries=3   ; 启动失败自动重试次数，默认是3</span><br><span class="line">user=tomcat     ; 用哪个用户启动进程，默认是root</span><br><span class="line">priority=999    ; 进程启动优先级，默认999，值小的优先启动</span><br><span class="line">redirect_stderr=true ; 把stderr重定向到stdout，默认false</span><br><span class="line">stdout_logfile_maxbytes=20MB ; stdout 日志文件大小，默认50MB</span><br><span class="line">stdout_logfile_backups = 20 ; stdout 日志文件备份数，默认是10</span><br><span class="line">; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span><br><span class="line">stdout_logfile=/opt/apache-tomcat-8.0.35/logs/catalina.out</span><br><span class="line">stopasgroup=false  ;默认为false,进程被杀死时，是否向这个进程组发送stop信号，包括子进程</span><br><span class="line">killasgroup=false  ;默认为false，向进程组发送kill信号，包括子进程</span><br></pre></td></tr></table></figure></p>
+<h1 id="启动supervisor"><a href="#启动supervisor" class="headerlink" title="启动supervisor"></a>启动supervisor</h1><p>sudo supervisord -c /etc/supervisor/supervisor.conf</p>
+<h3 id="命令行查看"><a href="#命令行查看" class="headerlink" title="命令行查看"></a>命令行查看</h3><p>sudo supervisorctl -c /etc/supervisor/supervisor.conf</p>
+<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p>pstree -p|grep redis</p>
+<p>unlink /tmp/supervisor.sock<br>修改supervisor.conf文件，修改到/var/run/及/var/log/目录<br>修改/etc/redis/redis.conf中daemonize为no</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

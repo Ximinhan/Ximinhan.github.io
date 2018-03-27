@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Redis | 回音壁 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Tiberius">
+    
+    
+
+    <meta name="description" content="redis笔记标签： redis  安装1# sudo apt install redis-server 查看redis运行状态123456#ps -aux|grep redis#netstat -nlt|grep 6379#sudo /etc/init.d/redis-server status--指定配置文件启动redis-server /etc/redis/redis.conf --logl">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis | 回音壁">
+<meta property="og:url" content="http://yoursite.com/2018-03-27-redis笔记/index.html">
+<meta property="og:site_name" content="回音壁">
+<meta property="og:description" content="redis笔记标签： redis  安装1# sudo apt install redis-server 查看redis运行状态123456#ps -aux|grep redis#netstat -nlt|grep 6379#sudo /etc/init.d/redis-server status--指定配置文件启动redis-server /etc/redis/redis.conf --logl">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2018-03-27T13:45:43.470Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis | 回音壁">
+<meta name="twitter:description" content="redis笔记标签： redis  安装1# sudo apt install redis-server 查看redis运行状态123456#ps -aux|grep redis#netstat -nlt|grep 6379#sudo /etc/init.d/redis-server status--指定配置文件启动redis-server /etc/redis/redis.conf --logl">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">回音壁</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          一切爆发都有片刻的宁静/一切死亡都有冗长的回声
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Redis</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-03-27" class="post-meta__date date">2018-03-27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/redis/">redis</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="redis笔记"><a href="#redis笔记" class="headerlink" title="redis笔记"></a>redis笔记</h1><p>标签： redis</p>
+<hr>
+<p>安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sudo apt install redis-server</span><br></pre></td></tr></table></figure></p>
+<p>查看redis运行状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#ps -aux|grep redis</span><br><span class="line">#netstat -nlt|grep 6379</span><br><span class="line">#sudo /etc/init.d/redis-server status</span><br><span class="line">--指定配置文件启动</span><br><span class="line">redis-server /etc/redis/redis.conf --loglevel warning</span><br><span class="line">redis&gt;CONFIG SET loglevel warning</span><br></pre></td></tr></table></figure></p>
+<p>命令行参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#redis-cli SHUTDOWN</span><br><span class="line">#redis-cli -h 127.0.0.1 -p 6379</span><br><span class="line">#redis-cli PING</span><br><span class="line">--选择数据与库 默认可以有16个</span><br><span class="line">redis&gt; SELECT 1</span><br><span class="line">redis&gt; info Keyspace --查看存储信息</span><br><span class="line">redis&gt; keys * --查看所有key</span><br></pre></td></tr></table></figure></p>
+<p>命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">--建立一个键</span><br><span class="line">127.0.0.1：6379&gt; set bar 1</span><br><span class="line">127.0.0.1：6379&gt; get bar</span><br><span class="line">--查看所有键</span><br><span class="line">127.0.0.1：6379&gt; keys *</span><br><span class="line">--判断键是否存在</span><br><span class="line">127.0.0.1：6379&gt; exists bar</span><br><span class="line">--删除键</span><br><span class="line">127.0.0.1：6379&gt; del bar</span><br><span class="line">--查看键数据类型（string/hash/list/set/zset）</span><br><span class="line">127.0.0.1：6379&gt; type bar</span><br><span class="line"></span><br><span class="line">##字符串类型</span><br><span class="line"></span><br><span class="line">--向指定列表类型键中增加元素</span><br><span class="line">127.0.0.1：6379&gt; lpush bar 1</span><br><span class="line">--递增/递减当前键值</span><br><span class="line">127.0.0.1：6379&gt; incr bar</span><br><span class="line">127.0.0.1：6379&gt; decr bar </span><br><span class="line">--指定增加数</span><br><span class="line">127.0.0.1：6379&gt; incrby bar 2</span><br><span class="line">--增加浮点数</span><br><span class="line">127.0.0.1：6379&gt; incrbyfloat bar 2.7 </span><br><span class="line">--尾部追加值</span><br><span class="line">127.0.0.1：6379&gt; append bar “hello”</span><br><span class="line">--获取字符串长度</span><br><span class="line">127.0.0.1：6379&gt; strlen bar</span><br><span class="line">--同时获取/设置多个键值</span><br><span class="line">127.0.0.1：6379&gt; mget key1 key2</span><br><span class="line">127.0.0.1：6379&gt; mset key1 v1 key2 v2</span><br><span class="line"></span><br><span class="line">##散列数据类型</span><br><span class="line"></span><br><span class="line">--散列类型的赋值与取值</span><br><span class="line">127.0.0.1：6379&gt; hset car name bmw</span><br><span class="line">127.0.0.1：6379&gt; hget car name</span><br><span class="line">--获取多个字段值</span><br><span class="line">127.0.0.1：6379&gt; hmget car name price </span><br><span class="line">127.0.0.1：6379&gt; hgeall car</span><br><span class="line">--判断字段是否存在</span><br><span class="line">127.0.0.1：6379&gt; hexists car name</span><br><span class="line">127.0.0.1：6379&gt; hsetnx key field value</span><br><span class="line">--删除字段</span><br><span class="line">127.0.0.1：6379&gt; hdel car name</span><br><span class="line">--仅取字段/值/数量</span><br><span class="line">127.0.0.1：6379&gt; hkeys car</span><br><span class="line">127.0.0.1：6379&gt; hvals car</span><br><span class="line">127.0.0.1：6379&gt; hlen car</span><br><span class="line"></span><br><span class="line">##列表类型</span><br><span class="line"></span><br><span class="line">--向前后添加元素</span><br><span class="line">127.0.0.1：6379&gt; lpush number 1 2</span><br><span class="line">127.0.0.1：6379&gt; rpush number 1 2</span><br><span class="line">--向前后弹出元素</span><br><span class="line">127.0.0.1：6379&gt; lpop number</span><br><span class="line">127.0.0.1：6379&gt; rpop number</span><br><span class="line">--获取列表元素个数</span><br><span class="line">127.0.0.1：6379&gt; llen number</span><br><span class="line">--列表切片</span><br><span class="line">127.0.0.1：6379&gt; lrange number 0 2</span><br><span class="line">--删除列表指定值</span><br><span class="line">127.0.0.1：6379&gt; lrem number  2</span><br><span class="line">--获取设置指定索引元素</span><br><span class="line">127.0.0.1：6379&gt; lindex key value</span><br><span class="line">127.0.0.1：6379&gt; lset key index value</span><br><span class="line">--只保留指定片段</span><br><span class="line">127.0.0.1：6379&gt; ltrim key start end </span><br><span class="line">--向列表指定位置插入元素</span><br><span class="line">127.0.0.1：6379&gt; linsert key before|after pivot value</span><br><span class="line">127.0.0.1：6379&gt; linsert number after 2 3</span><br><span class="line">--列表转移（作为队列）</span><br><span class="line">127.0.0.1：6379&gt; rpoplpush source dest</span><br><span class="line"></span><br><span class="line">##集合类型</span><br><span class="line"></span><br><span class="line">--增加/删除元素</span><br><span class="line">127.0.0.1：6379&gt; sadd key a b</span><br><span class="line">127.0.0.1：6379&gt; srem key a</span><br><span class="line">--获得所有元素</span><br><span class="line">127.0.0.1：6379&gt; smenbers key </span><br><span class="line">--判断元素是否在集合中</span><br><span class="line">127.0.0.1：6379&gt; sismember key a</span><br><span class="line">--集合运算</span><br><span class="line">127.0.0.1：6379&gt; sdiff set1 set2 #差集</span><br><span class="line">127.0.0.1：6379&gt; sinter set1 set2 #交集</span><br><span class="line">127.0.0.1：6379&gt; sunion set1 set2 #并集</span><br><span class="line">--获得集合元素个数</span><br><span class="line">127.0.0.1：6379&gt; scard set1</span><br><span class="line">--存储集合运算结果</span><br><span class="line">127.0.0.1：6379&gt; sdiffstore dest key1 key2 </span><br><span class="line">--从集合中弹出元素（随机）</span><br><span class="line">127.0.0.1：6379&gt; spop key</span><br><span class="line"></span><br><span class="line">##有序集合</span><br><span class="line"></span><br><span class="line">--增加/修改元素</span><br><span class="line">127.0.0.1：6379&gt; zadd bord 1 a 2 b </span><br><span class="line">--获得元素分数</span><br><span class="line">127.0.0.1：6379&gt; zscore bord a </span><br><span class="line">--获得排名范围列表（带分数）</span><br><span class="line">127.0.0.1：6379&gt; zrange bord 1 -1</span><br><span class="line">127.0.0.1：6379&gt; zrange bord 1 -1 withscore</span><br><span class="line">127.0.0.1：6379&gt; zrevrange bord 1 -1 withscore #从大到小</span><br><span class="line">--指定分数范围元素</span><br><span class="line">127.0.0.1：6379&gt; zrangebyscore bord 5 (10</span><br><span class="line">--增加元素分数</span><br><span class="line">127.0.0.1：6379&gt; zincby bord 4 a</span><br><span class="line">--获得集合总元素数量</span><br><span class="line">127.0.0.1：6379&gt; zcard bord</span><br><span class="line">--获得指定分数范围内的元素个数</span><br><span class="line">127.0.0.1：6379&gt; zcount bord 5 10</span><br><span class="line">--删除一个/多个元素</span><br><span class="line">127.0.0.1：6379&gt; zrem bord a b</span><br><span class="line">--按排名删除元素</span><br><span class="line">127.0.0.1：6379&gt; zremrangebyrank bord 5 10 </span><br><span class="line">--按照分数删除元素</span><br><span class="line">127.0.0.1：6379&gt; zremrangebyscore bord 5 10</span><br><span class="line">--获得元素排名</span><br><span class="line">127.0.0.1：6379&gt; zrank bord a </span><br><span class="line">127.0.0.1：6379&gt; zrevrank bord a #从大到小</span><br><span class="line"></span><br><span class="line">##事务</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line">127.0.0.1：6379&gt; multi</span><br><span class="line">127.0.0.1：6379&gt; set key1 1</span><br><span class="line">127.0.0.1：6379&gt; set key2 2</span><br><span class="line">127.0.0.1：6379&gt; exec</span><br><span class="line">--设置键过期时间</span><br><span class="line">127.0.0.1：6379&gt; expire key seconds</span><br><span class="line">127.0.0.1：6379&gt; pexpire key millisecond</span><br><span class="line">127.0.0.1：6379&gt; ttl key #查看剩余时间</span><br><span class="line">127.0.0.1：6379&gt; presist key #取消设置，set命令也可清除过期时间</span><br><span class="line"></span><br><span class="line">###通过修改maxmemory参数设置最大可用内存，根据maxmenory-policy参数指定策略删除键（可以使用LRU算法 allkeys-lru）</span><br><span class="line"></span><br><span class="line">--排序</span><br><span class="line">127.0.0.1：6379&gt; sort tag:mylist:posts</span><br><span class="line">127.0.0.1：6379&gt; sort tag:mylist:posts desc #从大到小</span><br><span class="line">127.0.0.1：6379&gt; sort tag:mylist:posts desc limit 1 2</span><br><span class="line">127.0.0.1：6379&gt; sort mylist alpha #非数字元素</span><br><span class="line">127.0.0.1：6379&gt; sort tag:mylist:posts by post:*-&gt;time desc</span><br><span class="line">127.0.0.1：6379&gt; sort tag:mylist:posts by post:*-&gt;time desc get post:*-&gt;title get post:*-&gt;time get # store sort.result</span><br><span class="line">--订阅发布</span><br><span class="line">127.0.0.1：6379&gt; publish channel message</span><br><span class="line">127.0.0.1：6379&gt; subscribe channel</span><br><span class="line">127.0.0.1：6379&gt; unsubscribe channel</span><br><span class="line">--执行脚本</span><br><span class="line">127.0.0.1：6379&gt; eval &quot;while true do end&quot; 0</span><br><span class="line">127.0.0.1：6379&gt; eval &quot;return redis.call(&apos;set&apos;,KEYS[1],ARGV[1])&quot; 1 foo bar  </span><br><span class="line">127.0.0.1：6379&gt; eval script key arg</span><br></pre></td></tr></table></figure></p>
+<h2 id="redis持久化"><a href="#redis持久化" class="headerlink" title="redis持久化"></a>redis持久化</h2><h3 id="RDB方式：根据某种规则”定时”将内存中的数据存储在硬盘上"><a href="#RDB方式：根据某种规则”定时”将内存中的数据存储在硬盘上" class="headerlink" title="RDB方式：根据某种规则”定时”将内存中的数据存储在硬盘上"></a>RDB方式：根据某种规则”定时”将内存中的数据存储在硬盘上</h3><pre><code>配置文件：/etc/redis/redis.conf
+快照规则：save [时间窗口] [改动次数]
+存储路径：dir
+rdb文件名：dbfilename dump.rdb
+存储压缩：rdbcompression
+</code></pre><h3 id="AOF方式：每次执行命令后将命令本身记录下来（重要数据）"><a href="#AOF方式：每次执行命令后将命令本身记录下来（重要数据）" class="headerlink" title="AOF方式：每次执行命令后将命令本身记录下来（重要数据）"></a>AOF方式：每次执行命令后将命令本身记录下来（重要数据）</h3><pre><code>开启：appendonly yes
+存储路径：dir
+存储文件名：appendfilename appendonly.aof
+重写条件：auto-aof-rewrite-percentage 100
+         auto-aof-rewrite-min-size 64mb
+同步时机：appendfsync everysec
+</code></pre><p>和主数据库的连接建立完成后，哨兵会定期执行如下操作：</p>
+<blockquote>
+<ul>
+<li>[1]每10秒哨兵会向主数据库和从数据库发送INFO命令<br>  获取当前数据库相关信息，获取从数据库列表</li>
+<li>[2]每2秒哨兵会向主数据库的 <strong>sentinel</strong>: hello频道发送自己的信息<br>  与其他哨兵分享自己信息</li>
+<li>[3]每1秒哨兵会向主数据库、从数据库和其他哨兵节点发送ping命令<br>  若无响应，哨兵自己认为主数据库（主观下线）同时询问其他哨兵，如果一定数量哨兵都认为主观下线则认为主数据库（客观下线）通过raft算法选举令头哨兵进行故障恢复</li>
+</ul>
+</blockquote>
+<p>##redis-trib.rb配置集群<br><a href="http://blog.csdn.net/tengxing007/article/details/77102068" target="_blank" rel="noopener">http://blog.csdn.net/tengxing007/article/details/77102068</a><br>使用cluster meet使节点认识集群中的其他节点</p>
+<blockquote>
+<p>1下载源码(使用/src/redis-trib.rb)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-4.0.7.tar.gz</span><br><span class="line">tar xzf redis-4.0.7.tar.gz</span><br><span class="line">cd redis-4.0.7</span><br><span class="line">make</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>2安装ruby<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ruby</span><br><span class="line">sudo gem install redis</span><br><span class="line">sudo apt install ruby-dev</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>3设置配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cd ~/work/redis/</span><br><span class="line">cp /etc/redis/redis.conf master-6380.conf</span><br><span class="line"></span><br><span class="line">修改如下参数</span><br><span class="line">port  6380           </span><br><span class="line">bind  127.0.0.1            </span><br><span class="line">daemonize    yes            </span><br><span class="line">pidfile /var/run/redis/redis-server-master-6380.pid  </span><br><span class="line">cluster-enabled  yes</span><br><span class="line">cluster-config-file  master-6380.conf </span><br><span class="line">cluster-node-timeout  15000    </span><br><span class="line">appendonly  yes       </span><br><span class="line">#当负责一个插槽的主库下线且没有相应的从库进行故障恢复时，集群不可用（默认为yes）允许可用（no）</span><br><span class="line">cluster-require-full-coverage no  </span><br><span class="line"></span><br><span class="line">分别新建 master-6380.conf master-6381.conf master-6382.conf slave-6383.conf  slave-6384.conf  slave-6385.conf</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>4启动多实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo redis-server master-6380.conf </span><br><span class="line">sudo redis-server master-6381.conf </span><br><span class="line">sudo redis-server master-6382.conf </span><br><span class="line">sudo redis-server slave-6383.conf </span><br><span class="line">sudo redis-server slave-6384.conf </span><br><span class="line">sudo redis-server slave-6385.conf </span><br><span class="line"></span><br><span class="line">ps -ef|grep redis</span><br><span class="line">redis     1225     1  0 1月27 ?       00:00:55 /usr/bin/redis-server 127.0.0.1:6379</span><br><span class="line">root     18068     1  0 01:10 ?        00:00:02 redis-server 127.0.0.1:6381 [cluster]</span><br><span class="line">root     18086     1  0 01:10 ?        00:00:02 redis-server 127.0.0.1:6382 [cluster]</span><br><span class="line">root     18109     1  0 01:11 ?        00:00:02 redis-server 127.0.0.1:6380 [cluster]</span><br><span class="line">root     18144     1  0 01:11 ?        00:00:01 redis-server 127.0.0.1:6384 [cluster]</span><br><span class="line">root     18157     1  0 01:11 ?        00:00:01 redis-server 127.0.0.1:6385 [cluster]</span><br><span class="line">root     18181     1  0 01:11 ?        00:00:01 redis-server 127.0.0.1:6383 [cluster]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>5建立集群<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">sudo src/redis-trib.rb create --replicas 1 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384 127.0.0.1:6385</span><br><span class="line">#create参数表示初始化集群 --replicas 1 表示每个主数据库拥有的从数据库个数为1</span><br><span class="line">&gt;&gt;&gt; Creating cluster</span><br><span class="line">&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...</span><br><span class="line">Using 3 masters:</span><br><span class="line">127.0.0.1:6380</span><br><span class="line">127.0.0.1:6381</span><br><span class="line">127.0.0.1:6382</span><br><span class="line">Adding replica 127.0.0.1:6384 to 127.0.0.1:6380</span><br><span class="line">Adding replica 127.0.0.1:6385 to 127.0.0.1:6381</span><br><span class="line">Adding replica 127.0.0.1:6383 to 127.0.0.1:6382</span><br><span class="line">&gt;&gt;&gt; Trying to optimize slaves allocation for anti-affinity</span><br><span class="line">[WARNING] Some slaves are in the same host as their master</span><br><span class="line">M: 84116c6ec23b747f06d96d6d88e06feedc505ed7 127.0.0.1:6380</span><br><span class="line">   slots:0-5460 (5461 slots) master</span><br><span class="line">M: 4cbf023aabf707ab6e80d452ca1f2091f639659f 127.0.0.1:6381</span><br><span class="line">   slots:5461-10922 (5462 slots) master</span><br><span class="line">M: 90caad16c0227970941b5efd70e783a86b8e8404 127.0.0.1:6382</span><br><span class="line">   slots:10923-16383 (5461 slots) master</span><br><span class="line">S: 996f8a927c6def84a2bd195d4719dfb9167b936c 127.0.0.1:6383</span><br><span class="line">   replicates 84116c6ec23b747f06d96d6d88e06feedc505ed7</span><br><span class="line">S: da391e12dfce497c1e0a2d98330deedebacbd251 127.0.0.1:6384</span><br><span class="line">   replicates 4cbf023aabf707ab6e80d452ca1f2091f639659f</span><br><span class="line">S: fde8da3d9ae8b40d9d5c652b9c9de8ce2e9ae87b 127.0.0.1:6385</span><br><span class="line">   replicates 90caad16c0227970941b5efd70e783a86b8e8404</span><br><span class="line">Can I set the above configuration? (type &apos;yes&apos; to accept): yes</span><br><span class="line">&gt;&gt;&gt; Nodes configuration updated</span><br><span class="line">&gt;&gt;&gt; Assign a different config epoch to each node</span><br><span class="line">&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster</span><br><span class="line">Waiting for the cluster to join....</span><br><span class="line">&gt;&gt;&gt; Performing Cluster Check (using node 127.0.0.1:6380)</span><br><span class="line">M: 84116c6ec23b747f06d96d6d88e06feedc505ed7 127.0.0.1:6380</span><br><span class="line">   slots:0-5460 (5461 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">S: 996f8a927c6def84a2bd195d4719dfb9167b936c 127.0.0.1:6383</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates 84116c6ec23b747f06d96d6d88e06feedc505ed7</span><br><span class="line">M: 90caad16c0227970941b5efd70e783a86b8e8404 127.0.0.1:6382</span><br><span class="line">   slots:10923-16383 (5461 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">M: 4cbf023aabf707ab6e80d452ca1f2091f639659f 127.0.0.1:6381</span><br><span class="line">   slots:5461-10922 (5462 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">S: fde8da3d9ae8b40d9d5c652b9c9de8ce2e9ae87b 127.0.0.1:6385</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates 90caad16c0227970941b5efd70e783a86b8e8404</span><br><span class="line">S: da391e12dfce497c1e0a2d98330deedebacbd251 127.0.0.1:6384</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates 4cbf023aabf707ab6e80d452ca1f2091f639659f</span><br><span class="line">[OK] All nodes agree about slots configuration.</span><br><span class="line">&gt;&gt;&gt; Check for open slots...</span><br><span class="line">&gt;&gt;&gt; Check slots coverage...</span><br><span class="line">[OK] All 16384 slots covered.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>6&gt;创建完成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#记得加上-c参数支持自动重定向 Enable cluster mode (follow -ASK and -MOVED redirections).</span><br><span class="line">$ redis-cli -c -p 6381</span><br><span class="line">redis 127.0.0.1:8000&gt;cluster nodes</span><br><span class="line">996f8a927c6def84a2bd195d4719dfb9167b936c 127.0.0.1:6383 slave 84116c6ec23b747f06d96d6d88e06feedc505ed7 0 1517073381082 4 connected</span><br><span class="line">fde8da3d9ae8b40d9d5c652b9c9de8ce2e9ae87b 127.0.0.1:6385 slave 90caad16c0227970941b5efd70e783a86b8e8404 0 1517073383088 6 connected</span><br><span class="line">4cbf023aabf707ab6e80d452ca1f2091f639659f 127.0.0.1:6381 myself,master - 0 0 2 connected 5461-10922</span><br><span class="line">da391e12dfce497c1e0a2d98330deedebacbd251 127.0.0.1:6384 slave 4cbf023aabf707ab6e80d452ca1f2091f639659f 0 1517073382085 5 connected</span><br><span class="line">84116c6ec23b747f06d96d6d88e06feedc505ed7 127.0.0.1:6380 master - 0 1517073384089 1 connected 0-5460</span><br><span class="line">90caad16c0227970941b5efd70e783a86b8e8404 127.0.0.1:6382 master - 0 1517073385092 3 connected 10923-16383</span><br></pre></td></tr></table></figure></p>
+<p>##只允许本机连接</p>
+<blockquote>
+<p>bind 127.0.0.1</p>
+</blockquote>
+<p>##数据库密码</p>
+<blockquote>
+<p>requirepass 123123<br>(从数据库）masterauth 123123<br>redis&gt;auth 123123</p>
+</blockquote>
+<p>##重命名命令可使只有自己可以使用</p>
+<p>##查看耗时命令日志</p>
+<blockquote>
+<p>redis&gt;slowlog get</p>
+</blockquote>
+<p>##查询分析工具 基于monitor命令的redis-faina工具<br><a href="https://github.com/Instragram/redis-faina" target="_blank" rel="noopener">https://github.com/Instragram/redis-faina</a></p>
+<p>##rdbtools快照解析器<br><a href="https://github.com/sripathikrishnan/redis-rdb-tools" target="_blank" rel="noopener">https://github.com/sripathikrishnan/redis-rdb-tools</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

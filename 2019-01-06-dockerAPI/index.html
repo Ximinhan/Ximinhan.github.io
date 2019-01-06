@@ -16,18 +16,18 @@
     
     
 
-    <meta name="description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json启动daemon1dockerd -H unix:///var/run/docker.sock">
+    <meta name="description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dockerAPI | 回音壁">
 <meta property="og:url" content="http://yoursite.com/2019-01-06-dockerAPI/index.html">
 <meta property="og:site_name" content="回音壁">
-<meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json启动daemon1dockerd -H unix:///var/run/docker.sock">
+<meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T03:35:53.020Z">
+<meta property="og:updated_time" content="2019-01-06T03:54:47.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
-<meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json启动daemon1dockerd -H unix:///var/run/docker.sock">
+<meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
     
     
     
@@ -184,16 +184,17 @@ classes that you can use:
   <section id="post-content" class="article-content post">
     <p>docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现</p>
 <p><a href="https://blog.csdn.net/qq_29999343/article/details/78294604" target="_blank" rel="noopener">https://blog.csdn.net/qq_29999343/article/details/78294604</a></p>
-<p>docker 配置文件位置 /etc/docker/daemon.json<br>启动daemon<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:5678</span><br></pre></td></tr></table></figure></p>
-<p>#1 获取镜像列表<br>docker命令 docker images<br>endpoint  get /images/json<br>curl -XGET <a href="http://localhost:5678/images/json" target="_blank" rel="noopener">http://localhost:5678/images/json</a> | python -mjson.tool</p>
-<p>#2 拷贝容器中的文件<br>docker命令 docker cp<br>endpoint post /containers/containerid/copy<br>curl -k -X POST <a href="http://localhost:5678/containers/3dede0a58623/copy" target="_blank" rel="noopener">http://localhost:5678/containers/3dede0a58623/copy</a> -H “Content-Type: application/json” -d ‘{“Resource”:”/dockerapifile”}’ &gt; cpfile</p>
-<p>#3 使用Dockerfile构建镜像<br>docker命令 docker build<br>endpoint post /build<br>curl -v -XPOST -H “Content-Type: application/tar” –data-binary @Dockerfile.tar <a href="http://localhost:5678/build?t=myimage:mytag" target="_blank" rel="noopener">http://localhost:5678/build?t=myimage:mytag</a></p>
-<p>#4 重新给镜像命名<br>docker命令 docker tag<br>endpoint post /images/name/tag<br>curl -XPOST <a href="http://localhost:5678/images/myimage:mytag/tag?repo=myimage" target="_blank" rel="noopener">http://localhost:5678/images/myimage:mytag/tag?repo=myimage</a></p>
+<p>docker 配置文件位置 /etc/docker/daemon.json</p>
+<p>启动daemon<br>dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:5678 </p>
+<h1 id="1-获取镜像列表"><a href="#1-获取镜像列表" class="headerlink" title="1 获取镜像列表"></a>1 获取镜像列表</h1><p>docker命令 docker images<br>endpoint  get /images/json<br>curl -XGET <a href="http://localhost:5678/images/json" target="_blank" rel="noopener">http://localhost:5678/images/json</a> | python -mjson.tool</p>
+<h1 id="2-拷贝容器中的文件"><a href="#2-拷贝容器中的文件" class="headerlink" title="2 拷贝容器中的文件"></a>2 拷贝容器中的文件</h1><p>docker命令 docker cp<br>endpoint post /containers/containerid/copy<br>curl -k -X POST <a href="http://localhost:5678/containers/3dede0a58623/copy" target="_blank" rel="noopener">http://localhost:5678/containers/3dede0a58623/copy</a> -H “Content-Type: application/json” -d ‘{“Resource”:”/dockerapifile”}’ &gt; cpfile</p>
+<h1 id="3-使用Dockerfile构建镜像"><a href="#3-使用Dockerfile构建镜像" class="headerlink" title="3 使用Dockerfile构建镜像"></a>3 使用Dockerfile构建镜像</h1><p>docker命令 docker build<br>endpoint post /build<br>curl -v -XPOST -H “Content-Type: application/tar” –data-binary @Dockerfile.tar <a href="http://localhost:5678/build?t=myimage:mytag" target="_blank" rel="noopener">http://localhost:5678/build?t=myimage:mytag</a></p>
+<h1 id="4-重新给镜像命名"><a href="#4-重新给镜像命名" class="headerlink" title="4 重新给镜像命名"></a>4 重新给镜像命名</h1><p>docker命令 docker tag<br>endpoint post /images/name/tag<br>curl -XPOST <a href="http://localhost:5678/images/myimage:mytag/tag?repo=myimage" target="_blank" rel="noopener">http://localhost:5678/images/myimage:mytag/tag?repo=myimage</a></p>
 <p>删除容器 docker rm containerid<br>删除镜像 docker rmi image</p>
-<p>#5 创建容器<br>docker命令 docker create<br>endpoint post /containers/create<br>curl -XPOPST -H “Content-Type: application/json” <a href="http://localhost:5678/containers/create" target="_blank" rel="noopener">http://localhost:5678/containers/create</a> -d ‘{<br>“Hostname”:”cybertan”,<br>“User”:”root”,<br>“Image”:”myimage”}’</p>
-<p>#6 运行容器<br>docker 命令 docker start<br>endpoint post /containers/id/start<br>curl -XPOST <a href="http://localhost:5678/containers/9ba220effbb4/start" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/start</a></p>
-<p>#7 查看容器<br>docker 命令 docker inspect<br>endpoint get /containers/id/json<br>curl -s -XGET <a href="http://localhost:5678/containers/9ba220effbb4/json" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/json</a> | python -mjson.tool</p>
-<p>#8 打开容器log<br>docker 命令 docker logs<br>endppoint get /containers/id/logs<br>curl -XGET <a href="http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1</a></p>
+<h1 id="5-创建容器"><a href="#5-创建容器" class="headerlink" title="5 创建容器"></a>5 创建容器</h1><p>docker命令 docker create<br>endpoint post /containers/create<br>curl -XPOPST -H “Content-Type: application/json” <a href="http://localhost:5678/containers/create" target="_blank" rel="noopener">http://localhost:5678/containers/create</a> -d ‘{<br>“Hostname”:”cybertan”,<br>“User”:”root”,<br>“Image”:”myimage”}’</p>
+<h1 id="6-运行容器"><a href="#6-运行容器" class="headerlink" title="6 运行容器"></a>6 运行容器</h1><p>docker命令 docker start<br>endpoint post /containers/id/start<br>curl -XPOST <a href="http://localhost:5678/containers/9ba220effbb4/start" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/start</a></p>
+<h1 id="7-查看容器"><a href="#7-查看容器" class="headerlink" title="7 查看容器"></a>7 查看容器</h1><p>docker命令 docker inspect<br>endpoint get /containers/id/json<br>curl -s -XGET <a href="http://localhost:5678/containers/9ba220effbb4/json" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/json</a> | python -mjson.tool</p>
+<h1 id="8-打开容器log"><a href="#8-打开容器log" class="headerlink" title="8 打开容器log"></a>8 打开容器log</h1><p>docker命令 docker logs<br>endppoint get /containers/id/logs<br>curl -XGET <a href="http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1</a></p>
 
   </section>
 

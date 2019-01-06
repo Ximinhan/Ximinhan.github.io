@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T04:17:59.719Z">
+<meta property="og:updated_time" content="2019-01-06T04:24:28.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
 <meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
@@ -198,6 +198,7 @@ classes that you can use:
 <h1 id="namespace-6项隔离"><a href="#namespace-6项隔离" class="headerlink" title="namespace 6项隔离"></a>namespace 6项隔离</h1><p>| UTS     | CLONE_NEWUTS  | 主机名与域名 |<br>| IPC     | CLONE_NEWIPC  | 共享内存     |<br>| PID     | CLONE_NEWPID  | 进程号       |<br>| NETWORK |               | 网络         |<br>| MOUNT   | CLONE_NEWNS   | 挂载点       |<br>| USER    | CLONE_NEWUSER | 用户与用户组 |</p>
 <h1 id="namespce-API"><a href="#namespce-API" class="headerlink" title="namespce API"></a>namespce API</h1><p>clone()在创建新进程的同时创建namespace<br>setns()加入一个已存在的namespace<br>unshare()在原先进程上进行namespace隔离<br>fork()调用</p>
 <p>docker daemon的server启动和初始化在1.6版本之前使用了一种复杂的job机制并依赖专门的docker engine来管理和运行这些job 1.7版本之后使用新的server初始化流程，server会与daemon对象绑定来接收并处理完成client请求</p>
+<p>/var/lib/docker/<br>  -aufs                    #aufs驱动工作的目录<br>    -diff                  #aufs文件系统的所有层的存储目录<br>    -layer                 #存储aufs层之间关系等元数据<br>    -mnt                   #aufs文件系统挂载点<br>  -containers              #容器配置文件目录<br>  -image/aufs              #存储镜像和镜像层信息<br>    -imagedb               #存储所有镜像的元数据<br>    -layerdb               #存储镜像层和容器层的元数据<br>    -repositories.json     #镜像仓库中所有镜像的源和tag<br>    -distribution<br>  -volumes                 #存放volumes数据和元数据</p>
 
   </section>
 

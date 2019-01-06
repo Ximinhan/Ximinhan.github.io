@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T04:39:26.470Z">
+<meta property="og:updated_time" content="2019-01-06T04:40:37.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
 <meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
@@ -249,7 +249,8 @@ classes that you can use:
 </li>
 <li>cgroups，systemd</li>
 </ul>
-<p>#docker三剑客<br>docker-machine用于在多节点安装docker服务<br>docker-compose用于自动部署容器<br>docker-swarm用于管理集群</p>
+<p>获取容器内部信息有三个参数：attach logs enevts</p>
+<h1 id="docker三剑客"><a href="#docker三剑客" class="headerlink" title="docker三剑客"></a>docker三剑客</h1><p>docker-machine用于在多节点安装docker服务<br>docker-compose用于自动部署容器<br>docker-swarm用于管理集群</p>
 <p>golang官方提供的flag.Parse()包可以完成参数解析<br>docker attach挂载命令行到容器中主要实现IO流共享绑定</p>
 
   </section>

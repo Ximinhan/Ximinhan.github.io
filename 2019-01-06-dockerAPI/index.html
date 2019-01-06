@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T04:24:28.686Z">
+<meta property="og:updated_time" content="2019-01-06T04:28:44.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
 <meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
@@ -195,10 +195,45 @@ classes that you can use:
 <h1 id="6-运行容器"><a href="#6-运行容器" class="headerlink" title="6 运行容器"></a>6 运行容器</h1><p>docker命令 docker start<br>endpoint post /containers/id/start<br>curl -XPOST <a href="http://localhost:5678/containers/9ba220effbb4/start" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/start</a></p>
 <h1 id="7-查看容器"><a href="#7-查看容器" class="headerlink" title="7 查看容器"></a>7 查看容器</h1><p>docker命令 docker inspect<br>endpoint get /containers/id/json<br>curl -s -XGET <a href="http://localhost:5678/containers/9ba220effbb4/json" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/json</a> | python -mjson.tool</p>
 <h1 id="8-打开容器log"><a href="#8-打开容器log" class="headerlink" title="8 打开容器log"></a>8 打开容器log</h1><p>docker命令 docker logs<br>endppoint get /containers/id/logs<br>curl -XGET <a href="http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1</a></p>
-<h1 id="namespace-6项隔离"><a href="#namespace-6项隔离" class="headerlink" title="namespace 6项隔离"></a>namespace 6项隔离</h1><p>| UTS     | CLONE_NEWUTS  | 主机名与域名 |<br>| IPC     | CLONE_NEWIPC  | 共享内存     |<br>| PID     | CLONE_NEWPID  | 进程号       |<br>| NETWORK |               | 网络         |<br>| MOUNT   | CLONE_NEWNS   | 挂载点       |<br>| USER    | CLONE_NEWUSER | 用户与用户组 |</p>
+<h1 id="namespace-6项隔离"><a href="#namespace-6项隔离" class="headerlink" title="namespace 6项隔离"></a>namespace 6项隔离</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">UTS</th>
+<th style="text-align:left">CLONE_NEWUTS</th>
+<th style="text-align:left">主机名与域名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IPC</td>
+<td style="text-align:left">CLONE_NEWIPC</td>
+<td style="text-align:left">共享内存</td>
+</tr>
+<tr>
+<td style="text-align:left">PID</td>
+<td style="text-align:left">CLONE_NEWPID</td>
+<td style="text-align:left">进程号</td>
+</tr>
+<tr>
+<td style="text-align:left">NETWORK</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">网络</td>
+</tr>
+<tr>
+<td style="text-align:left">MOUNT</td>
+<td style="text-align:left">CLONE_NEWNS</td>
+<td style="text-align:left">挂载点</td>
+</tr>
+<tr>
+<td style="text-align:left">USER</td>
+<td style="text-align:left">CLONE_NEWUSER</td>
+<td style="text-align:left">用户与用户组</td>
+</tr>
+</tbody>
+</table>
 <h1 id="namespce-API"><a href="#namespce-API" class="headerlink" title="namespce API"></a>namespce API</h1><p>clone()在创建新进程的同时创建namespace<br>setns()加入一个已存在的namespace<br>unshare()在原先进程上进行namespace隔离<br>fork()调用</p>
 <p>docker daemon的server启动和初始化在1.6版本之前使用了一种复杂的job机制并依赖专门的docker engine来管理和运行这些job 1.7版本之后使用新的server初始化流程，server会与daemon对象绑定来接收并处理完成client请求</p>
-<p>/var/lib/docker/<br>  -aufs                    #aufs驱动工作的目录<br>    -diff                  #aufs文件系统的所有层的存储目录<br>    -layer                 #存储aufs层之间关系等元数据<br>    -mnt                   #aufs文件系统挂载点<br>  -containers              #容器配置文件目录<br>  -image/aufs              #存储镜像和镜像层信息<br>    -imagedb               #存储所有镜像的元数据<br>    -layerdb               #存储镜像层和容器层的元数据<br>    -repositories.json     #镜像仓库中所有镜像的源和tag<br>    -distribution<br>  -volumes                 #存放volumes数据和元数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/docker/</span><br><span class="line">  \-aufs                    #aufs驱动工作的目录</span><br><span class="line">    \-diff                  #aufs文件系统的所有层的存储目录</span><br><span class="line">    \-layer                 #存储aufs层之间关系等元数据</span><br><span class="line">    \-mnt                   #aufs文件系统挂载点</span><br><span class="line">  \-containers              #容器配置文件目录</span><br><span class="line">  \-image/aufs              #存储镜像和镜像层信息</span><br><span class="line">    \-imagedb               #存储所有镜像的元数据</span><br><span class="line">    \-layerdb               #存储镜像层和容器层的元数据</span><br><span class="line">    \-repositories.json     #镜像仓库中所有镜像的源和tag</span><br><span class="line">    \-distribution</span><br><span class="line">  \-volumes                 #存放volumes数据和元数据</span><br></pre></td></tr></table></figure>
 
   </section>
 

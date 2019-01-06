@@ -24,10 +24,12 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T03:54:47.588Z">
+<meta property="og:image" content="https://images-cdn.shimo.im/db8LuTHjuQ4IELfU/图片.png!thumbnail">
+<meta property="og:updated_time" content="2019-01-06T03:58:26.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
 <meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
+<meta name="twitter:image" content="https://images-cdn.shimo.im/db8LuTHjuQ4IELfU/图片.png!thumbnail">
     
     
     
@@ -195,6 +197,44 @@ classes that you can use:
 <h1 id="6-运行容器"><a href="#6-运行容器" class="headerlink" title="6 运行容器"></a>6 运行容器</h1><p>docker命令 docker start<br>endpoint post /containers/id/start<br>curl -XPOST <a href="http://localhost:5678/containers/9ba220effbb4/start" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/start</a></p>
 <h1 id="7-查看容器"><a href="#7-查看容器" class="headerlink" title="7 查看容器"></a>7 查看容器</h1><p>docker命令 docker inspect<br>endpoint get /containers/id/json<br>curl -s -XGET <a href="http://localhost:5678/containers/9ba220effbb4/json" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/json</a> | python -mjson.tool</p>
 <h1 id="8-打开容器log"><a href="#8-打开容器log" class="headerlink" title="8 打开容器log"></a>8 打开容器log</h1><p>docker命令 docker logs<br>endppoint get /containers/id/logs<br>curl -XGET <a href="http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1" target="_blank" rel="noopener">http://localhost:5678/containers/9ba220effbb4/logs?stderr=1&amp;stdout=1</a></p>
+<h1 id="namespace-6项隔离"><a href="#namespace-6项隔离" class="headerlink" title="namespace 6项隔离"></a>namespace 6项隔离</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">UTS</th>
+<th style="text-align:left">CLONE_NEWUTS</th>
+<th style="text-align:left">主机名与域名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IPC</td>
+<td style="text-align:left">CLONE_NEWIPC</td>
+<td style="text-align:left">共享内存</td>
+</tr>
+<tr>
+<td style="text-align:left">PID</td>
+<td style="text-align:left">CLONE_NEWPID</td>
+<td style="text-align:left">进程号</td>
+</tr>
+<tr>
+<td style="text-align:left">NETWORK</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">网络</td>
+</tr>
+<tr>
+<td style="text-align:left">MOUNT</td>
+<td style="text-align:left">CLONE_NEWNS</td>
+<td style="text-align:left">挂载点</td>
+</tr>
+<tr>
+<td style="text-align:left">USER</td>
+<td style="text-align:left">CLONE_NEWUSER</td>
+<td style="text-align:left">用户与用户组</td>
+</tr>
+</tbody>
+</table>
+<h1 id="namespce-API"><a href="#namespce-API" class="headerlink" title="namespce API"></a>namespce API</h1><p>clone()在创建新进程的同时创建namespace<br>setns()加入一个已存在的namespace<br>unshare()在原先进程上进行namespace隔离<br>fork()调用</p>
+<p><img src="https://images-cdn.shimo.im/db8LuTHjuQ4IELfU/图片.png!thumbnail" alt="图片"></p>
 
   </section>
 

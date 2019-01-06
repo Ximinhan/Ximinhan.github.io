@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T04:40:37.242Z">
+<meta property="og:updated_time" content="2019-01-06T04:46:09.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
 <meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
@@ -237,16 +237,18 @@ classes that you can use:
 <h1 id="UFS创建容器文件系统的过程"><a href="#UFS创建容器文件系统的过程" class="headerlink" title="UFS创建容器文件系统的过程"></a>UFS创建容器文件系统的过程</h1><p>启动容器的时候：<br>1创建只读层（busybox）<br>2创建容器读写层（writeLayer）<br>3创建挂载点（mnt）并把只读层和读写层挂载到挂载点<br>4将挂载点作为容器根目录</p>
 <p>容器退出的时候：<br>1卸载挂载点（mnt）的文件系统<br>2删除挂载点<br>3删除读写层（writeLayer）</p>
 <h1 id="docker-exec-进入容器实现"><a href="#docker-exec-进入容器实现" class="headerlink" title="docker exec 进入容器实现"></a>docker exec 进入容器实现</h1><p>基于setns系统调用可以根据提供的PID再次进入指定Namespace<br>go每启动一个程序都会进入多线程状态这使得Mount Namespace无法使用setns<br>使用Cgo调用C<br>go标准库中没有c的包，Cgo会创建一个特殊的命名空间与C命名空间交流<br>使用构造函数导入C模块在go运行环境启动之前执行</p>
-<h1 id="Deamon命令"><a href="#Deamon命令" class="headerlink" title="Deamon命令"></a>Deamon命令</h1><p> Deamon网络配置:<br> Deamon有三种途径实现监听：</p>
+<h1 id="Deamon命令"><a href="#Deamon命令" class="headerlink" title="Deamon命令"></a>Deamon命令</h1><p>Deamon网络配置:<br>Deamon有三种途径实现监听：</p>
 <ul>
 <li>通过socket文件 /var/runDocker.socket</li>
 <li>通过tcp协议</li>
-<li><p>通过fd文件</p>
+<li>通过fd文件</li>
+</ul>
 <p>Deamon存储驱动配置:</p>
-</li>
-<li><p>AUFS，Devicemapper,btrfs,zfs,overlay</p>
+<ul>
+<li>AUFS，Devicemapper,btrfs,zfs,overlay</li>
+</ul>
 <p>Deamon执行驱动配置:</p>
-</li>
+<ul>
 <li>cgroups，systemd</li>
 </ul>
 <p>获取容器内部信息有三个参数：attach logs enevts</p>

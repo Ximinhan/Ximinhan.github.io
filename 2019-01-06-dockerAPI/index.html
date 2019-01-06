@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-06T04:28:44.188Z">
+<meta property="og:updated_time" content="2019-01-06T04:39:26.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerAPI | 回音壁">
 <meta name="twitter:description" content="docker api 是直接通过请求docker darmon来与docker交互，即docker命令的底层实现 https://blog.csdn.net/qq_29999343/article/details/78294604 docker 配置文件位置 /etc/docker/daemon.json 启动daemondockerd -H unix:///var/run/docker.sock">
@@ -234,6 +234,23 @@ classes that you can use:
 <h1 id="namespce-API"><a href="#namespce-API" class="headerlink" title="namespce API"></a>namespce API</h1><p>clone()在创建新进程的同时创建namespace<br>setns()加入一个已存在的namespace<br>unshare()在原先进程上进行namespace隔离<br>fork()调用</p>
 <p>docker daemon的server启动和初始化在1.6版本之前使用了一种复杂的job机制并依赖专门的docker engine来管理和运行这些job 1.7版本之后使用新的server初始化流程，server会与daemon对象绑定来接收并处理完成client请求</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/docker/</span><br><span class="line">  \-aufs                    #aufs驱动工作的目录</span><br><span class="line">    \-diff                  #aufs文件系统的所有层的存储目录</span><br><span class="line">    \-layer                 #存储aufs层之间关系等元数据</span><br><span class="line">    \-mnt                   #aufs文件系统挂载点</span><br><span class="line">  \-containers              #容器配置文件目录</span><br><span class="line">  \-image/aufs              #存储镜像和镜像层信息</span><br><span class="line">    \-imagedb               #存储所有镜像的元数据</span><br><span class="line">    \-layerdb               #存储镜像层和容器层的元数据</span><br><span class="line">    \-repositories.json     #镜像仓库中所有镜像的源和tag</span><br><span class="line">    \-distribution</span><br><span class="line">  \-volumes                 #存放volumes数据和元数据</span><br></pre></td></tr></table></figure>
+<h1 id="UFS创建容器文件系统的过程"><a href="#UFS创建容器文件系统的过程" class="headerlink" title="UFS创建容器文件系统的过程"></a>UFS创建容器文件系统的过程</h1><p>启动容器的时候：<br>1创建只读层（busybox）<br>2创建容器读写层（writeLayer）<br>3创建挂载点（mnt）并把只读层和读写层挂载到挂载点<br>4将挂载点作为容器根目录</p>
+<p>容器退出的时候：<br>1卸载挂载点（mnt）的文件系统<br>2删除挂载点<br>3删除读写层（writeLayer）</p>
+<h1 id="docker-exec-进入容器实现"><a href="#docker-exec-进入容器实现" class="headerlink" title="docker exec 进入容器实现"></a>docker exec 进入容器实现</h1><p>基于setns系统调用可以根据提供的PID再次进入指定Namespace<br>go每启动一个程序都会进入多线程状态这使得Mount Namespace无法使用setns<br>使用Cgo调用C<br>go标准库中没有c的包，Cgo会创建一个特殊的命名空间与C命名空间交流<br>使用构造函数导入C模块在go运行环境启动之前执行</p>
+<h1 id="Deamon命令"><a href="#Deamon命令" class="headerlink" title="Deamon命令"></a>Deamon命令</h1><p> Deamon网络配置:<br> Deamon有三种途径实现监听：</p>
+<ul>
+<li>通过socket文件 /var/runDocker.socket</li>
+<li>通过tcp协议</li>
+<li><p>通过fd文件</p>
+<p>Deamon存储驱动配置:</p>
+</li>
+<li><p>AUFS，Devicemapper,btrfs,zfs,overlay</p>
+<p>Deamon执行驱动配置:</p>
+</li>
+<li>cgroups，systemd</li>
+</ul>
+<p>#docker三剑客<br>docker-machine用于在多节点安装docker服务<br>docker-compose用于自动部署容器<br>docker-swarm用于管理集群</p>
+<p>golang官方提供的flag.Parse()包可以完成参数解析<br>docker attach挂载命令行到容器中主要实现IO流共享绑定</p>
 
   </section>
 

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Ceph | 回音壁 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Tiberius">
+    
+    
+
+    <meta name="description" content="#Notes1.元数据决定数据往哪里存，在哪里读取2.CRUSH算法动态计算数据存储与读取位置，而不是为每个请求执行元数据表查询3.RAID局限于只能防止两块磁盘故障而不能保障更多的其他故障，Ceph采用数据副本的方式使用软件定义存储无需提供数据副本4.OpenStack中可以通过cinder（块）和glance（image）组件使用Ceph块设备（RDB协议） 12345678910111213">
+<meta name="keywords" content="Ceph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ceph | 回音壁">
+<meta property="og:url" content="http://yoursite.com/2019-01-08-Ceph/index.html">
+<meta property="og:site_name" content="回音壁">
+<meta property="og:description" content="#Notes1.元数据决定数据往哪里存，在哪里读取2.CRUSH算法动态计算数据存储与读取位置，而不是为每个请求执行元数据表查询3.RAID局限于只能防止两块磁盘故障而不能保障更多的其他故障，Ceph采用数据副本的方式使用软件定义存储无需提供数据副本4.OpenStack中可以通过cinder（块）和glance（image）组件使用Ceph块设备（RDB协议） 12345678910111213">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2019-01-08T14:22:37.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ceph | 回音壁">
+<meta name="twitter:description" content="#Notes1.元数据决定数据往哪里存，在哪里读取2.CRUSH算法动态计算数据存储与读取位置，而不是为每个请求执行元数据表查询3.RAID局限于只能防止两块磁盘故障而不能保障更多的其他故障，Ceph采用数据副本的方式使用软件定义存储无需提供数据副本4.OpenStack中可以通过cinder（块）和glance（image）组件使用Ceph块设备（RDB协议） 12345678910111213">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">回音壁</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          一切爆发都有片刻的宁静/一切死亡都有冗长的回声
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Ceph</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2019-01-08" class="post-meta__date date">2019-01-08</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Ceph/">Ceph</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>#Notes<br>1.元数据决定数据往哪里存，在哪里读取<br>2.CRUSH算法动态计算数据存储与读取位置，而不是为每个请求执行元数据表查询<br>3.RAID局限于只能防止两块磁盘故障而不能保障更多的其他故障，Ceph采用数据副本的方式使用软件定义存储无需提供数据副本<br>4.OpenStack中可以通过cinder（块）和glance（image）组件使用Ceph块设备（RDB协议）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apt install virtualbox</span><br><span class="line">service virtualbox status</span><br><span class="line">VBoxManage hostonlyif create</span><br><span class="line">VBoxManage hostonlyif ipconfig vboxnet1 --ip 192.168.57.1 --netmask 255.255.255.0</span><br><span class="line">VBoxManage createvm --name ceph-node1 --ostype RedHat_64 --register</span><br><span class="line">VBoxManage modifyvm ceph-node1 --memory 1024 --nic1 nat --nic2 hostonly --hostonlyadapter2 vboxnet1</span><br><span class="line">VBoxManage storagectl ceph-node1 --name &quot;IDE Controller&quot; --add ide --controller PIIX4 --hostiocache on --bootable on</span><br><span class="line">VBoxManage storageattach ceph-node1 --storagectl &quot;IDE Controller&quot; --type dvddrive --port 0 --device 0 --medium CentOS-6.4-x86_64-LiveCD.iso</span><br><span class="line">VBoxManage storagectl ceph-node1 --name &quot;SATA Controller&quot; --add sata --controller IntelAHCI --hostiocache on --bootable on</span><br><span class="line">VBoxManage createhd --filename OS-ceph-node1.vdi --size 10240</span><br><span class="line">VBoxManage storageattach ceph-node1 --storagectl &quot;SATA Controller&quot; --port 0 --device 0 --type hdd --medium OS-ceph-node1.vdi</span><br><span class="line">VBoxManage createhd --filename ceph-node1-osd1.vdi --size 10240</span><br><span class="line">VBoxManage storageattach ceph-node1 --storagectl &quot;SATA Controller&quot; --port 1 --device 0 --type hdd --medium ceph-node1-osd1.vdi</span><br><span class="line">VBoxManage createhd --filename ceph-node1-osd2.vdi --size 10240</span><br><span class="line">VBoxManage storageattach ceph-node1 --storagectl &quot;SATA Controller&quot; --port 2 --device 0 --type hdd --medium ceph-node1-osd2.vdi</span><br><span class="line">VBoxManage createhd --filename ceph-node1-osd3.vdi --size 10240</span><br><span class="line">VBoxManage storageattach ceph-node1 --storagectl &quot;SATA Controller&quot; --port 3 --device 0 --type hdd --medium ceph-node1-osd3.vdi</span><br><span class="line"></span><br><span class="line">VBoxManage clonevm --name ceph-node2 ceph-node1 --register</span><br><span class="line">VBoxManage clonevm --name ceph-node3 ceph-node1 --register</span><br><span class="line">sudo vi /etc/yum.repos.d/ceph.repo</span><br><span class="line">[ceph noarch]</span><br><span class="line">name=Ceph noarch packages</span><br><span class="line">baseurl=http://download.ceph.com/rpm-hammer/el6/noarch</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">type=rpm-md</span><br><span class="line">gpgkey=https://download.ceph.com/keys/release.asc</span><br><span class="line"></span><br><span class="line">sudo yum -y update</span><br><span class="line">sudo yum -y install --release hammer ceph ceph-deploy</span><br></pre></td></tr></table></figure>
+<p>#三种存储方式<br>块存储，文件存储，对象存储</p>
+<p>#专有名词<br>RADOS：可靠自动分布式对象存储<br>OSD：Ceph对象存储设备<br>MON：Ceph monitor<br>librados：访问RADOS的接口<br>RBD：Ceph块设备<br>RGW：Ceph对象网关<br>MDS：Ceph元数据服务器，存储只供CephFS使用的元数据，跟踪文件层次结构<br>CephFS：Ceph文件系统</p>
+<p>#命令<br>查看RADOS池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$rados lspool</span><br></pre></td></tr></table></figure></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

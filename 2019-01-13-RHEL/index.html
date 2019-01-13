@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="回音壁">
 <meta property="og:description" content="开源协议 GNU GPL BSD Apache MIT  认证考试   科目代码 科目名称     EX210 红帽 OpenStack 认证系统管理员考试   EX220 红帽混合云管理专业技能证书考试   EX236 红帽混合云存储专业技能证书考试   EX248 红帽认证 JBoss 管理员考试   EX280 红帽平台即服务专业技能证书考试   EX318 红帽认证虚拟化管理员考试   E">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-01-13T13:28:22.408Z">
+<meta property="og:updated_time" content="2019-01-13T13:31:38.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RHEL | 回音壁">
 <meta name="twitter:description" content="开源协议 GNU GPL BSD Apache MIT  认证考试   科目代码 科目名称     EX210 红帽 OpenStack 认证系统管理员考试   EX220 红帽混合云管理专业技能证书考试   EX236 红帽混合云存储专业技能证书考试   EX248 红帽认证 JBoss 管理员考试   EX280 红帽平台即服务专业技能证书考试   EX318 红帽认证虚拟化管理员考试   E">
@@ -248,11 +248,57 @@ classes that you can use:
 <p>/etc/fstab记录了设备挂载信息表<br>partprobe命令手动将分区信息同步到内核<br>fdisk管理设备信息<br>mkfs.xfs 格式化分区<br>du -sh 查看数据占用<br>free -m查看交换分区<br>quota命令可以进行磁盘容量配额管理<br>xfs_quota命令专门针对XFS文件系统管理quota磁盘容量配额服务<br>udev设备管理服务管理所有设备</p>
 <p>RAID0：串联扩容<br>RAID1：复制<br>RAID5：增加存储奇偶校验信息<br>RAID10：以RAID0方式管理RAID1模式的集合</p>
 <p>mdadm查看磁盘阵列详细信息</p>
-<p>LVM部署命令<br>| 功能/命令   | 物理卷管理   | 卷组管理   | 逻辑卷管理   |<br>| :———- | :———– | :——— | :———– |<br>| 扫描        | pvscan       | vgscan     | lvscan       |<br>| 建立        | pvcreate     | vgcreate   | lvcreate     |<br>| 显示        | pvdisplay    | vgdisplay  | lvdisplay    |<br>| 删除        | pvremove     | vgremove   | lvremove     |<br>| 扩展        |              | vgextend   | lvextend     |<br>| 缩小        |              | vgreduce   | lvreduce     | </p>
+<h1 id="LVM部署命令"><a href="#LVM部署命令" class="headerlink" title="LVM部署命令"></a>LVM部署命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">功能/命令</th>
+<th style="text-align:left">物理卷管理</th>
+<th style="text-align:left">卷组管理</th>
+<th style="text-align:left">逻辑卷管理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">扫描</td>
+<td style="text-align:left">pvscan</td>
+<td style="text-align:left">vgscan</td>
+<td style="text-align:left">lvscan</td>
+</tr>
+<tr>
+<td style="text-align:left">建立</td>
+<td style="text-align:left">pvcreate</td>
+<td style="text-align:left">vgcreate</td>
+<td style="text-align:left">lvcreate</td>
+</tr>
+<tr>
+<td style="text-align:left">显示</td>
+<td style="text-align:left">pvdisplay</td>
+<td style="text-align:left">vgdisplay</td>
+<td style="text-align:left">lvdisplay</td>
+</tr>
+<tr>
+<td style="text-align:left">删除</td>
+<td style="text-align:left">pvremove</td>
+<td style="text-align:left">vgremove</td>
+<td style="text-align:left">lvremove</td>
+</tr>
+<tr>
+<td style="text-align:left">扩展</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">vgextend</td>
+<td style="text-align:left">lvextend</td>
+</tr>
+<tr>
+<td style="text-align:left">缩小</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">vgreduce</td>
+<td style="text-align:left">lvreduce</td>
+</tr>
+</tbody>
+</table>
 <p>RHEL6中使用iptables服务将防火墙策略交由内核netfilter网络过滤器处理<br>RHEL7中使用firewalld服务将防火墙策略交由内核nftables包过滤框架处理</p>
 <h1 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h1><ul>
-<li><p>规则链：</p>
-<ul>
+<li>规则链：   <ul>
 <li>PREROUTING</li>
 <li>INPUT</li>
 <li>OUTPUT</li>
@@ -260,8 +306,7 @@ classes that you can use:
 <li>POSTROUTING</li>
 </ul>
 </li>
-<li><p>动作：</p>
-<ul>
+<li>动作：<ul>
 <li>ACCEPT</li>
 <li>LOG</li>
 <li>REJECT 回复拒绝</li>
